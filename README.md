@@ -175,3 +175,52 @@ git log --pretty=format:"%h %ad %an %s" --date=short
 ![Рисунок 23](screenshots/23.png)
 
 Рисунок 23 – Отправка ветки report на GitHub
+
+## Лог команд
+
+```
+git config --global user.name "4517 АндрейкинАС"
+git config --global user.email "andreikinadrej@gmail.com"
+git clone https://github.com/KvodratnoeSozdanie/LR6
+cd LR6
+git pull
+git checkout -b additional
+git add mergefile.txt
+git commit -m "Поменял информацию в mergefile.txt"
+git checkout master
+git add mergefile.txt
+git commit -m "Добавил конфликт в mergefile.txt"
+git log --oneline
+git log --oneline additional
+git log --oneline --graph --all
+git diff master..additional
+git merge additional
+git add mergefile.txt
+git commit -m "Исправлен конфликт в файле mergefile.txt"
+git branch -d additional
+git reset --hard HEAD~1
+git checkout -b report
+git push -u origin report
+git add README.md screenshots
+git commit -m "Добавлены разделы 1-2 отчёта"
+git push
+git add README.md
+git commit -m "Добавлены разделы 3-4 отчёта"
+git push
+git add README.md
+git commit -m "Добавлены разделы 5-6 отчёта"
+git push
+git add README.md
+git commit -m "Добавлены разделы 7-9 отчёта"
+git push
+git log --pretty=format:"%h %ad %an %s" --date=short
+git add README.md screenshots
+git commit -m "Добавлены разделы 10-12 отчёта"
+git push
+```
+
+## Выводы
+
+В ходе выполнения данной лабораторной работы были получены навыки работы с системой контроля версий Git: настройка клиента, клонирование репозитория, создание и удаление веток, фиксация изменений с комментариями, слияние веток с разрешением конфликта, откат коммита и отправка изменений в удалённый репозиторий.
+
+Работа с локальным и удалённым репозиторием позволила понять, что изменения, внесённые через интерфейс GitHub, попадают в локальный репозиторий только после выполнения `git pull`, а локальные изменения в удалённый – после `git push`. Конфликт слияния возник из-за изменения одной и той же строки в двух ветках и был разрешён вручную с последующей фиксацией результата.
